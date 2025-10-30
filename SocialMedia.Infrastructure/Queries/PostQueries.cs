@@ -32,5 +32,35 @@ namespace SocialMedia.Infrastructure.Queries
                     HAVING COUNT(c.Id) > 2
                     ORDER BY TotalComentarios DESC;            
                     ";
+        public static string PostConComentariosNoActivos = @"
+                        SELECT 
+                        p.Id AS PostId,
+                        p.Description ,
+                        p.Date
+                    FROM Post p
+                    LEFT JOIN Comment c 
+                        ON p.Id = c.PostId
+                        AND c.UserId IN (
+                            SELECT u.Id
+                            FROM [User] u
+                            WHERE u.IsActive = 1
+                        )
+                    WHERE c.Id IS NULL;
+
+                ";
+        public static string PostComentariosMenoresEdad = @"
+                        SELECT 
+                p.Id AS IdPost,
+                p.Description ,
+                COUNT(c.Id) AS CantidadComentariosMenores
+                FROM Post p
+                JOIN Comment c ON p.Id = c.PostId
+                JOIN [User] u ON c.UserId = u.Id
+                WHERE 
+                    DATEDIFF(YEAR, u.DateOfBirth, GETDATE()) < 18
+                GROUP BY 
+                    p.Id, p.Description;
+    "; 
+
     }
 }

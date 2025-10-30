@@ -68,7 +68,20 @@ namespace SocialMedia.Core.Services
 
             return posts;
         }
+        public async Task<IEnumerable<PostNoCommentUserActive>> GetPostNoCommentUserAsync()
+        {
+            var posts = await _unitOfWork.PostRepository.GetPostNoCommentUserAsync();
 
+            return posts;
+        }
+        public async Task<IEnumerable<PostCommentMinorAge>> GetPostCommenMinorAgeAsync()
+        {
+            var posts = await _unitOfWork.PostRepository.GetPostCommentMinorAgeAsync();
+
+            return posts;
+        }
+
+        
         public async Task<Post> GetPostAsync(int id)
         {
             //return await _postRepository.GetById(id);

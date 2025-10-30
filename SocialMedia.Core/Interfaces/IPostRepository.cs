@@ -13,6 +13,8 @@ namespace SocialMedia.Core.Interfaces
         Task<IEnumerable<Post>> GetAllPostByUserAsync(int idUser);
         Task<IEnumerable<Post>> GetAllPostDapperAsync(int limit = 10);
         Task<IEnumerable<PostComentariosUsersResponse>> GetPostCommentUserAsync();
+        Task<IEnumerable<PostNoCommentUserActive>> GetPostNoCommentUserAsync();
+        Task<IEnumerable<PostCommentMinorAge>> GetPostCommentMinorAgeAsync();
         //Task<Post> GetPostAsync(int id);
         //Task InsertPostAsync(Post post);
         //Task UpdatePostAsync(Post post);

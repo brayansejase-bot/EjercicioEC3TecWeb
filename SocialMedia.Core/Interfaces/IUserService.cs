@@ -1,17 +1,16 @@
-﻿using SocialMedia.Core.Entities;
-using SocialMedia.Core.CustomEntities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SocialMedia.Core.CustomEntities;
+using SocialMedia.Core.Entities;
+using SocialMedia.Core.QueryFilters;
 
 namespace SocialMedia.Core.Interfaces
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IUserService
     {
-       // Task<User> GetUserByIdAsync(int id);
-        
         Task<IEnumerable<UserWithoutComment>> GetUserWithoutCommentAsync();
         Task<IEnumerable<UserComment3DistinctPost>> GetUserComment3DistincPostAsync();
     }

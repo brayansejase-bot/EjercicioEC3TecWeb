@@ -66,7 +66,7 @@ namespace SocialMedia.Infrastructure.Data
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw;
             }
             finally
             {
@@ -93,7 +93,7 @@ namespace SocialMedia.Infrastructure.Data
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw;
             }
             finally
             {
@@ -120,7 +120,7 @@ namespace SocialMedia.Infrastructure.Data
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ;
             }
             finally
             {
@@ -150,7 +150,7 @@ namespace SocialMedia.Infrastructure.Data
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw;
             }
             finally
             {

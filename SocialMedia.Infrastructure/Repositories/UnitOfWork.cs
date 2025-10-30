@@ -16,8 +16,8 @@ namespace SocialMedia.Infrastructure.Repositories
     {
         private readonly SocialMediaContext _context;
         public readonly IPostRepository? _postRepository;
-        public readonly IBaseRepository<User>? _userRepository;
-        public readonly IBaseRepository<Comment>? _commentRepository;
+        public readonly IUserRepository? _userRepository;
+        public readonly ICommentRepository? _commentRepository;
         public readonly IDapperContext _dapper;
 
         private IDbContextTransaction? _efTransaction;
@@ -31,11 +31,11 @@ namespace SocialMedia.Infrastructure.Repositories
         public IPostRepository PostRepository =>
             _postRepository ?? new PostRepository(_context, _dapper);
 
-        public IBaseRepository<User> UserRepository =>
-           _userRepository ?? new BaseRepository<User>(_context);
-
-        public IBaseRepository<Comment> CommentRepository =>
-            _commentRepository ?? new BaseRepository<Comment>(_context);
+        public IUserRepository UserRepository =>
+           _userRepository ?? new UserRepository(_context, _dapper);
+        
+        public ICommentRepository CommentRepository =>
+            _commentRepository ?? new CommentRepository(_context, _dapper);
 
         public void Dispose()
         {

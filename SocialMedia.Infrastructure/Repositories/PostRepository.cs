@@ -40,7 +40,7 @@ namespace SocialMedia.Infrastructure.Repositories
             }
             catch (Exception err)
             {
-                throw new Exception(err.Message);
+                throw;
             }
         }
 
@@ -54,7 +54,34 @@ namespace SocialMedia.Infrastructure.Repositories
             }
             catch (Exception err)
             {
-                throw new Exception(err.Message);
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<PostNoCommentUserActive>> GetPostNoCommentUserAsync()
+        {
+            try
+            {
+                var sql = PostQueries.PostConComentariosNoActivos;
+
+                return await _dapper.QueryAsync<PostNoCommentUserActive>(sql);
+            }
+            catch (Exception err)
+            {
+                throw;
+            }
+        }
+        public async Task<IEnumerable<PostCommentMinorAge>> GetPostCommentMinorAgeAsync()
+        {
+            try
+            {
+                var sql = PostQueries.PostComentariosMenoresEdad;
+
+                return await _dapper.QueryAsync<PostCommentMinorAge>(sql);
+            }
+            catch (Exception err)
+            {
+                throw;
             }
         }
 
